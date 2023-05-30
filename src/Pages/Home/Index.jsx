@@ -2,8 +2,7 @@ import  { useState } from "react";
 import {BsArrowLeftShort,BsChevronDown,BsFillGridFill } from "react-icons/bs"
 import {BsFillBuildingsFill} from "react-icons/bs"
 import {BsSearch} from "react-icons/bs"
-BsSearch
-import Layout from '../../Components/Layout'
+import Layout from '../../Components/Layout/Index'
 
 
 
