@@ -36,7 +36,7 @@ subMenuItems:[
       <div className="inline-flex">
       <BsFillBuildingsFill className={`text-4xl rounded cursor-pointer block float-left mr-2 duration-500 ${open && "rotate-[360deg]"}`}/>
         <h3 className={` duration-100 ${!open && "scale-0"}`}>
-        SISTEMA ADMINISTRATIVO CENTRALIZADO
+        SISTEMA ADMINISTRATIVO CENTRALIZADO(SAC)
         </h3>
         
       </div>
