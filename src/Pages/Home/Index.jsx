@@ -8,22 +8,47 @@ import Layout from '../../Components/Layout/Index'
 
 function Home() {
   const [open,setOpen]=useState(true);
-  const [subMenu,setSubMenu]=useState(false);
-  const Menus = [
-{title:"Ventas",
-subMenu:true,
-subMenuItems:[
-  {title:"Clientes"},
-  {title:"Factura de ventas"},
-  {title:"Notas de credito"},
-],},
-{title:"Compras"},
-{title:"Bancos"},
-{title:"Dashboard"},
-{title:"Calendarios"},
+  const [menuInventario,setMenuInventario]=useState(false);
+  const [menuVentas,setMenuVentas]=useState(false);
+  const [menuCompras,setMenuCompras]=useState(false);
+  const inventario =   {
+    title:"Inventario",
+    menuInventario:true,
+  subMenuItems:[
+    {title:"Ajuste"},
+    {title:"Traslado"},
+    {title:"Artículo"},
+    {title:"Sucursal"},
+    {title:"Almacen"},
+    {title:"Procedencia"},
+  ],}
 
+  const Ventas =   {
+    title:"Ventas",
+    menuVentas:true,
+  subMenuItems:[
+    {title:"Pedido"},
+    {title:"Factura venta"},
+    {title:"Cotizacion"},
+    {title:"Devolucion"},
+    {title:"Nota de entrega"},
+    {title:"Despacho"},
+    {title:"Cobro"},
+    {title:"Cliente"},
+  ],}
 
-  ];
+  const Compras =   {
+    title:"Compras",
+    menuCompras:true,
+  subMenuItems:[
+    {title:"Orden de Compra"},
+    {title:"Factura compra"},
+    {title:"Cotizacion"},
+    {title:"Nota de recepcion"},
+    {title:"Pago"},
+    {title:"Proveedores"},
+  ],}
+
   return (
    
   <Layout>
@@ -44,22 +69,17 @@ subMenuItems:[
       <input type={"search"} placeholder="Search" className="text-base bg-transparent w-full text-white focus:outline-none" />
       </div>
       <ul className="pt-2">
-     
-        {Menus.map((menu,index)=>(
-          <>
-          
-  
-              <li className={`text-gray-200 text-sm
+        <>
+      <li className={`text-gray-200 text-sm
                flex gap-x-4 cursor-pointer p-2
-               hover:bg-gray-600 rounded-md mt-2 `} key={index}> <BsFillGridFill/><span className={`${!open && "hidden"}`} >{menu.title}</span>
-               { menu.subMenu &&(
-                <BsChevronDown onClick={()=>setSubMenu(!subMenu)}/>
-               )}
-               
-               </li>
-               {menu.subMenu && subMenu && (
+               hover:bg-gray-600 rounded-md mt-2 `} > <BsFillGridFill/><span className={`${!open && "hidden"}`} >{inventario.title}</span>
+               { inventario.menuInventario &&(
+                <BsChevronDown onClick={()=>setMenuInventario(!menuInventario)}/>
+               )}     
+                  </li> 
+               {inventario.menuInventario && menuInventario && (
                 <ul>
-                  {menu.subMenuItems.map((x,i)=>(
+                  {inventario.subMenuItems.map((x,i)=>(
                     <li key={i}>
                      
                       {x.title}
@@ -68,12 +88,49 @@ subMenuItems:[
                   ))}
                 </ul>
                )}
-              </>
-        ))}
-        
+             
+             <li className={`text-gray-200 text-sm
+               flex gap-x-4 cursor-pointer p-2
+               hover:bg-gray-600 rounded-md mt-2 `} > <BsFillGridFill/><span className={`${!open && "hidden"}`} >{Ventas.title}</span>
+               { Ventas.menuVentas &&(
+                <BsChevronDown onClick={()=>setMenuVentas(!menuVentas)}/>
+               )}     
+                  </li> 
+               {Ventas.menuVentas && menuVentas && (
+                <ul>
+                  {Ventas.subMenuItems.map((x,i)=>(
+                    <li key={i}>
+                     
+                      {x.title}
+
+                    </li>
+                  ))}
+                </ul>
+               )}
+
+<li className={`text-gray-200 text-sm
+               flex gap-x-4 cursor-pointer p-2
+               hover:bg-gray-600 rounded-md mt-2 `} > <BsFillGridFill/><span className={`${!open && "hidden"}`} >{Compras.title}</span>
+               { Compras.menuCompras &&(
+                <BsChevronDown onClick={()=>setMenuCompras(!menuCompras)}/>
+               )}     
+                  </li> 
+               {Compras.menuCompras && menuCompras && (
+                <ul>
+                  {Compras.subMenuItems.map((x,i)=>(
+                    <li key={i}>
+                     
+                      {x.title}
+
+                    </li>
+                  ))}
+                </ul>
+               )}
+             </>
+       
       </ul>
       </div>
-      <div className="p-7"><h1 className="text-2xl ">Inico SAC </h1></div>
+      <div className="p-7 justify-center"><h1 className="text-2xl">  SISTEMA ADMINISTRATIVO CENTRALIZADO(SAC) </h1></div>
     </div>
   </Layout>
  
