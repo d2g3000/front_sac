@@ -9,6 +9,16 @@ const Layout = ({ children }) => {
   }
   
   return (
+
+    <div className='fixed h-screen  ss:overflow-x-scroll  '  >
+  
+
+
+    
+    <div className='fixed top-0 ' ><Navbar/></div>
+    <div className='flex flex-col ' style={{marginLeft:"80px",marginTop:"70px",maxWidth: "80vw" }}>{children}</div>
+
+  </div>/*
     <Box sx={{ display: "flex" }}>
     
       <Box
@@ -34,7 +44,7 @@ const Layout = ({ children }) => {
         <Toolbar />
         <Outlet />
       </Box>
-    </Box>
+    </Box>*/
   )
 } 
 export default Layout
