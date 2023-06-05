@@ -1,7 +1,9 @@
 import { useContext } from 'react'
 import { NavLink } from 'react-router-dom'
 import  { useState } from "react";
-import {BsArrowLeftShort,BsChevronDown,BsFillGridFill } from "react-icons/bs"
+import {BsArrowLeftShort,BsChevronDown,BsFillGridFill,BsFillCartFill } from "react-icons/bs"
+import {MdPointOfSale, MdInventory } from "react-icons/md"
+
 import {BsFillBuildingsFill} from "react-icons/bs"
 import {BsSearch} from "react-icons/bs"
 import {FcHome} from "react-icons/fc"
@@ -19,11 +21,14 @@ const Navbar = () => {
       title:"Inventario",
       menuInventario:true,
     subMenuItems:[
+      {title:"Artículo",navegacion:'/articulos'},
+      {title:"Almacen",navegacion:'/almacenes'},
+      {title:"Sucursal",navegacion:'/sucursales'},
       {title:"Ajuste",navegacion:'/ajustes'},
       {title:"Traslado",navegacion:'/traslados'},
-      {title:"Artículo",navegacion:'/articulos'},
-      {title:"Sucursal",navegacion:'/sucursales'},
-      {title:"Almacen",navegacion:'/almacenes'},
+      
+     
+     
       {title:"Procedencia",navegacion:'/procedencias'},
     ],}
   
@@ -38,7 +43,7 @@ const Navbar = () => {
       {title:"Nota de entrega",navegacion:'/notas-de-entrega'},
       {title:"Despacho",navegacion:'/despachos'},
       {title:"Cobro",navegacion:'/cobros'},
-      {title:"Cliente",navegacion:'/clientes'},
+      {title:"Clientes",navegacion:'/clientes'},
     ],}
   
     const Compras =   {
@@ -82,17 +87,17 @@ return (
 
             </NavLink>
             </div>
-      <div className="flex items-center rounded-md bg-stone-400 mt-6 px-4 py-2">
+     {/*  <div className="flex items-center rounded-md bg-stone-400 mt-6 px-4 py-2">
       <BsSearch className="text-white"/>
       <input type={"search"} placeholder="Search" className="text-base bg-transparent w-full text-white focus:outline-none" />
-      </div>
+      </div>*/}
       <ul className="pt-2">
         <>
-      <li className={`text-gray-200 text-sm
+      <li className={`text-gray-200 text-md
                flex gap-x-4 cursor-pointer p-2
-               hover:bg-gray-600 rounded-md mt-2 `} > <BsFillGridFill/><span className={`${!open && "hidden"}`} >{inventario.title}</span>
+               hover:bg-gray-600 rounded-md mt-2 `} > <MdInventory/><span className={`${!open && "hidden"}`} >{inventario.title}</span>
                { inventario.menuInventario &&(
-                <BsChevronDown onClick={()=>context.setMenuInventarioOpen(!context.isMenuInventarioOpen)}/>
+                <BsChevronDown  className={`${!open && "hidden"} ${!context.isMenuInventarioOpen ? "rotate-[270deg]" :"rotate-[0deg]"}`} onClick={()=>context.setMenuInventarioOpen(!context.isMenuInventarioOpen)}/>
                )}     
                   </li> 
                {inventario.menuInventario && context.isMenuInventarioOpen && (
@@ -119,9 +124,9 @@ return (
              
              <li className={`text-gray-200 text-sm
                flex gap-x-4 cursor-pointer p-2
-               hover:bg-gray-600 rounded-md mt-2 `} > <BsFillGridFill/><span className={`${!open && "hidden"}`} >{Ventas.title}</span>
+               hover:bg-gray-600 rounded-md mt-2 `} > <MdPointOfSale/><span className={`${!open && "hidden"}`} >{Ventas.title}</span>
                { Ventas.menuVentas &&(
-                <BsChevronDown onClick={()=>context.setMenuVentasOpen(!context.isMenuVentasOpen)}/>
+                <BsChevronDown  className={`${!open && "hidden"} ${!context.isMenuVentasOpen ? "rotate-[270deg]" :"rotate-[0deg]"}`} onClick={()=>context.setMenuVentasOpen(!context.isMenuVentasOpen)}/>
                )}     
                   </li> 
                {Ventas.menuVentas && context.isMenuVentasOpen && (
@@ -148,9 +153,9 @@ return (
 
 <li className={`text-gray-200 text-sm
                flex gap-x-4 cursor-pointer p-2
-               hover:bg-gray-600 rounded-md mt-2 `} > <BsFillGridFill/><span className={`${!open && "hidden"}`} >{Compras.title}</span>
+               hover:bg-gray-600 rounded-md mt-2 `} > <BsFillCartFill/><span className={`${!open && "hidden"}`} >{Compras.title}</span>
                { Compras.menuCompras &&(
-                <BsChevronDown onClick={()=>context.setMenuComprasOpen(!context.isMenuComprasOpen)}/>
+                <BsChevronDown  className={`${!open && "hidden"} ${!context.isMenuComprasOpen ? "rotate-[270deg]" :"rotate-[0deg]"}`} onClick={()=>context.setMenuComprasOpen(!context.isMenuComprasOpen)}/>
                )}     
                   </li> 
                {Compras.menuCompras && context.isMenuComprasOpen && (

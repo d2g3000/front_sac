@@ -1,6 +1,4 @@
 import PropTypes from 'prop-types'
-import { Outlet } from "react-router-dom";
-import { Box, Toolbar } from "@mui/material";
 import Navbar from '../../Components/NavBar/Index'
 
 const Layout = ({ children }) => {
