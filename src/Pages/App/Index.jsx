@@ -1,5 +1,6 @@
 import { useRoutes,BrowserRouter } from 'react-router-dom'
 import { SacProvider } from '../../Context/Index'
+import { AuthProvider } from '../../auth/auth'
 import Home from '../Home/Index'
 import './App.css'
 import Ajuste from '../Inventario/Ajuste/Index'
@@ -22,6 +23,7 @@ import CotizacionCompra from '../Compras/CotizacionCompra/Index'
 import NotaDeRecepcion from '../Compras/NotaDeRecepcion/Index'
 import Pago from '../Compras/Pago/Index'
 import Proveedor from '../Compras/Proveedor/Index'
+import {Login} from'../Login/Login/Index'
 
 
 const AppRoutes = () => {
@@ -47,7 +49,7 @@ const AppRoutes = () => {
     { path: '/notas-de-recepcion', element: <NotaDeRecepcion /> },
     { path: '/pagos', element: <Pago /> },
     { path: '/Proveedores', element: <Proveedor /> },
- 
+    { path: '/login', element: <Login /> },
   ])
 
   return routes
@@ -59,7 +61,9 @@ const  App = () => {
     return (
       <SacProvider>
       <BrowserRouter>
+      <AuthProvider>
             <AppRoutes/>
+            </AuthProvider>
         </BrowserRouter>
       </SacProvider>
      

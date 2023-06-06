@@ -3,14 +3,17 @@ import { NavLink } from 'react-router-dom'
 import  { useState } from "react";
 import {BsArrowLeftShort,BsChevronDown,BsFillGridFill,BsFillCartFill } from "react-icons/bs"
 import {MdPointOfSale, MdInventory } from "react-icons/md"
-
+import { useAuth } from '../../auth/auth';
 import {BsFillBuildingsFill} from "react-icons/bs"
 import {BsSearch} from "react-icons/bs"
 import {FcHome} from "react-icons/fc"
 import { SacContext} from '../../Context/Index';
+import {BiUserCircle} from "react-icons/bi"
+
 
 
 const Navbar = () => {
+  const auth = useAuth()
     const context = useContext(SacContext)
 
     const [open,setOpen]=useState(true);
@@ -57,42 +60,17 @@ const Navbar = () => {
       {title:"Pago",navegacion:'/pagos'},
       {title:"Proveedores",navegacion:'/proveedores'},
     ],}
-return (
 
-    <>
-    
-    <div className="flex ">
-      <div className={`h-screen ss:p-1 sm:p-5 pt-8  ${open ? "w-60":"w-20"}   bg-gray-500 relative overflow-y-auto overflow-x-hidden`}>
-      <BsArrowLeftShort className={`bg-white text-dark-purple text-3xl rounded-full absolute 
-      -right-3 top-9 border border-dark-purple cursor-pointer ${!open && "rotate-180"}`} onClick={()=>setOpen(!open)}/>
-      <div className="inline-flex">
-      <BsFillBuildingsFill className={`text-4xl rounded cursor-pointer block float-left mr-2 duration-500 ${open && "rotate-[360deg]"}`}/>
-        <h3 className={` duration-100 ${!open && "scale-0"}`}>
-        SISTEMA ADMINISTRATIVO CENTRALIZADO(SAC)
-        </h3>
-        </div>
-        <div className='mt-2 items-center'>
 
-     
-        <NavLink
-              to='/'
-              style={({ isActive, isPending }) => {
-                return {
-                  fontWeight: isActive ? "bold" : "",
-                  color: isPending ? "red" : "black",
-                };
-              }} caseSensitive>
-                <FcHome className='cursor-pointer block float-left mr-2'/>
-           Home
-
-            </NavLink>
-            </div>
-     {/*  <div className="flex items-center rounded-md bg-stone-400 mt-6 px-4 py-2">
-      <BsSearch className="text-white"/>
-      <input type={"search"} placeholder="Search" className="text-base bg-transparent w-full text-white focus:outline-none" />
-      </div>*/}
-      <ul className="pt-2">
+const renderview=()=>{
+  if(auth.user){
+  return(
+    <ul className="pt-2">
         <>
+        <div className='text-black text-sm '>
+    Bienvenido: {auth.user?.username}
+ 
+    </div>
       <li className={`text-gray-200 text-md
                flex gap-x-4 cursor-pointer p-2
                hover:bg-gray-600 rounded-md mt-2 `} > <MdInventory/><span className={`${!open && "hidden"}`} >{inventario.title}</span>
@@ -182,6 +160,64 @@ return (
              </>
        
       </ul>
+  )}
+}
+
+return (
+
+    <>
+    
+    <div className="flex ">
+      <div className={`h-screen ss:p-1 sm:p-5 pt-8  ${open ? "w-60":"w-20"}   bg-gray-500 relative overflow-y-auto overflow-x-hidden`}>
+      <BsArrowLeftShort className={`bg-white text-dark-purple text-3xl rounded-full absolute 
+      -right-3 top-9 border border-dark-purple cursor-pointer ${!open && "rotate-180"}`} onClick={()=>setOpen(!open)}/>
+      <div className="inline-flex">
+      <BsFillBuildingsFill className={`text-4xl rounded cursor-pointer block float-left mr-2 duration-500 ${open && "rotate-[360deg]"}`}/>
+        <h3 className={` duration-100 ${!open && "scale-0"}`}>
+        SISTEMA ADMINISTRATIVO CENTRALIZADO(SAC)
+        </h3>
+        </div>
+        <div className='mt-2 items-center'>
+
+     
+        <NavLink
+              to='/'
+              style={({ isActive, isPending }) => {
+                return {
+                  fontWeight: isActive ? "bold" : "",
+                  color: isPending ? "red" : "white",
+                };
+              }} caseSensitive>
+                <FcHome className='cursor-pointer block float-left mr-2'/>
+                <span className={` ${!open && "hidden"}`}>
+           Home
+                </span>
+            </NavLink>
+            </div>
+
+            <div>
+    <NavLink
+      to='/login' 
+      style={({ isActive, isPending }) => {
+        return {
+          fontWeight: isActive ? "bold" : "",
+          color: isPending ? "red" : "white",
+        };
+      }} caseSensitive>
+     
+        <BiUserCircle className='cursor-pointer block float-left mr-2 mt-2'/>
+        <span className={` ${!open && "hidden"}`}>
+        Login
+        </span>
+
+
+    </NavLink>
+    </div>
+     {/*  <div className="flex items-center rounded-md bg-stone-400 mt-6 px-4 py-2">
+      <BsSearch className="text-white"/>
+      <input type={"search"} placeholder="Search" className="text-base bg-transparent w-full text-white focus:outline-none" />
+      </div>*/}
+      {renderview()}
       </div>
       </div>
     </>
