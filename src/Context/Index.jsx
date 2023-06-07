@@ -12,14 +12,14 @@ export const SacProvider = ({children}) => {
 
 
     const [ubicaciones, setUbicaciones] = useState(null)
-   
+   /*
     useEffect(() => {
         fetch('https://d2g3000.000webhostapp.com/api/v1/ubicaciones')
           .then(response => response.json())
           .then(data => setUbicaciones(data))
          
       }, [])
-    
+    */
     return(
         <SacContext.Provider value={{
             isMenuInventarioOpen,
