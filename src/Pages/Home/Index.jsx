@@ -1,9 +1,15 @@
 
 import Layout from '../../Components/Layout/Index'
 import MenuCard from "../../Components/MenuCard/Index";
-
+import { useAuth } from '../../auth/auth'
+import { Navigate } from 'react-router-dom'
 
 function Home() {
+  const auth=useAuth()
+
+  if(!auth.user){
+      return  <Navigate to='/login'/>
+  }
 
 
   return (

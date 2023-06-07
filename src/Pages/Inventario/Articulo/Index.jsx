@@ -2,12 +2,20 @@ import { useState } from "react"
 import Layout from '../../../Components/Layout/Index'
 ////import { UseArticulo } from '../../../Hooks/UseArticulo/Index'
 import UseFetch from '../../../Hooks/UseFetch/Index'
+import { useAuth } from '../../../auth/auth'
+import { Navigate } from 'react-router-dom'
 
 
 
 
 
 function Articulo(){
+  const auth=useAuth()
+
+  if(!auth.user){
+      return  <Navigate to='/login'/>
+  }
+
     const [showModal, setShowModal] = useState(false);
 
     
