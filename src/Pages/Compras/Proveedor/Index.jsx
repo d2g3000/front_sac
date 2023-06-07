@@ -9,14 +9,15 @@ import { Navigate } from 'react-router-dom'
 function Proveedor(){
 
   const auth=useAuth()
-
+  const [showModal, setShowModal] = useState(false)
+  
   if(!auth.user){
       return  <Navigate to='/login'/>
   }
 
    // const {proveedor}=UseProveedor();
    const [proveedor] = UseFetch("https://d2g3000.000webhostapp.com/api/v1/proveedors")
-   const [showModal, setShowModal] = useState(false)
+  
     return(
        <Layout>
 

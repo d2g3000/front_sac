@@ -8,14 +8,14 @@ import { Navigate } from 'react-router-dom'
 function Cliente(){
 
   const auth=useAuth()
-
+  const [showModal, setShowModal] = useState(false)
     if(!auth.user){
         return  <Navigate to='/login'/>
     }
 
     const [cliente] = UseFetch("https://d2g3000.000webhostapp.com/api/v1/clientes");
    // const {cliente}=UseCliente();
-   const [showModal, setShowModal] = useState(false)
+
 
     return(
        <Layout>

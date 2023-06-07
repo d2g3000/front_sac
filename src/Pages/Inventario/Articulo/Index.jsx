@@ -11,12 +11,12 @@ import { Navigate } from 'react-router-dom'
 
 function Articulo(){
   const auth=useAuth()
-
+  const [showModal, setShowModal] = useState(false);
   if(!auth.user){
       return  <Navigate to='/login'/>
   }
 
-    const [showModal, setShowModal] = useState(false);
+
 
     
 
