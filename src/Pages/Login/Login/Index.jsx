@@ -1,16 +1,24 @@
 import React from 'react';
 import { useAuth } from '../../../auth/auth';
 import Layout from '../../../Components/Layout/Index';
+import { Navigate } from 'react-router-dom'
 
 function Login() {
   const auth = useAuth();
   const [username, setUsername] = React.useState('');
   const [pass, setPass] = React.useState('');
+
+
   const login = (e) => {
     e.preventDefault();
     auth.login({ username, pass});
   };
   
+  if(auth.user){
+    return  <Navigate to="/"/>
+}
+
+
   return (
 
     <>

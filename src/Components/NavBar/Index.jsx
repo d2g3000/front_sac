@@ -163,6 +163,54 @@ const renderview=()=>{
   )}
 }
 
+const renderLogin=()=>{
+  if (auth.user){
+    return( 
+    <div>
+     
+    <NavLink
+      to='/logout' 
+      style={({ isActive, isPending }) => {
+        return {
+          fontWeight: isActive ? "bold" : "",
+          color: isPending ? "red" : "white",
+        };
+      }} caseSensitive>
+     
+        <BiUserCircle className='cursor-pointer block float-left mr-2 mt-2'/>
+        <span className={` ${!open && "hidden"}`}>
+        Logout
+        </span>
+  
+  
+    </NavLink>
+    </div>)
+  }else
+  {
+  return( 
+    <div>
+     
+    <NavLink
+      to='/login' 
+      style={({ isActive, isPending }) => {
+        return {
+          fontWeight: isActive ? "bold" : "",
+          color: isPending ? "red" : "white",
+        };
+      }} caseSensitive>
+     
+        <BiUserCircle className='cursor-pointer block float-left mr-2 mt-2'/>
+        <span className={` ${!open && "hidden"}`}>
+        Login
+        </span>
+  
+  
+    </NavLink>
+    </div>)
+  }
+   
+  }
+
 return (
 
     <>
@@ -195,24 +243,7 @@ return (
             </NavLink>
             </div>
 
-            <div>
-    <NavLink
-      to='/login' 
-      style={({ isActive, isPending }) => {
-        return {
-          fontWeight: isActive ? "bold" : "",
-          color: isPending ? "red" : "white",
-        };
-      }} caseSensitive>
-     
-        <BiUserCircle className='cursor-pointer block float-left mr-2 mt-2'/>
-        <span className={` ${!open && "hidden"}`}>
-        Login
-        </span>
-
-
-    </NavLink>
-    </div>
+          {renderLogin()}
      {/*  <div className="flex items-center rounded-md bg-stone-400 mt-6 px-4 py-2">
       <BsSearch className="text-white"/>
       <input type={"search"} placeholder="Search" className="text-base bg-transparent w-full text-white focus:outline-none" />

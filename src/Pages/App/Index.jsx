@@ -24,7 +24,7 @@ import NotaDeRecepcion from '../Compras/NotaDeRecepcion/Index'
 import Pago from '../Compras/Pago/Index'
 import Proveedor from '../Compras/Proveedor/Index'
 import {Login} from'../Login/Login/Index'
-
+import {LogoutPage} from'../Login/LogoutPage/Index'
 
 const AppRoutes = () => {
   let routes = useRoutes([
@@ -50,6 +50,7 @@ const AppRoutes = () => {
     { path: '/pagos', element: <Pago /> },
     { path: '/Proveedores', element: <Proveedor /> },
     { path: '/login', element: <Login /> },
+    { path: '/logout', element: <LogoutPage /> },
   ])
 
   return routes
