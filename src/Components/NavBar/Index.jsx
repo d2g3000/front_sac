@@ -1,11 +1,10 @@
 import { useContext } from 'react'
 import { NavLink } from 'react-router-dom'
 import  { useState } from "react";
-import {BsArrowLeftShort,BsChevronDown,BsFillGridFill,BsFillCartFill } from "react-icons/bs"
+import {BsArrowLeftShort,BsChevronDown,BsFillCartFill } from "react-icons/bs"
 import {MdPointOfSale, MdInventory } from "react-icons/md"
 import { useAuth } from '../../auth/auth';
 import {BsFillBuildingsFill} from "react-icons/bs"
-import {BsSearch} from "react-icons/bs"
 import {FcHome} from "react-icons/fc"
 import { SacContext} from '../../Context/Index';
 import {BiUserCircle} from "react-icons/bi"
@@ -17,9 +16,6 @@ const Navbar = () => {
     const context = useContext(SacContext)
 
     const [open,setOpen]=useState(true);
-    const [menuInventario,setMenuInventario]=useState(false);
-    const [menuVentas,setMenuVentas]=useState(false);
-    const [menuCompras,setMenuCompras]=useState(false);
     const inventario =   {
       title:"Inventario",
       menuInventario:true,
@@ -61,6 +57,16 @@ const Navbar = () => {
       {title:"Proveedores",navegacion:'/proveedores'},
     ],}
 
+    const Banco =   {
+      title:"Caja y Banco",
+      menuBanco:true,
+    subMenuItems:[
+      {title:"Movimiento de caja",navegacion:'/'},
+      {title:"Movimiento de Banco",navegacion:'/'},
+      {title:"Deposito",navegacion:'/'},
+      {title:"orden de pago",navegacion:'/'},
+     
+    ],}
 
 const renderview=()=>{
   if(auth.user){
@@ -125,7 +131,9 @@ const renderview=()=>{
             </NavLink>
 
                     </li>
+                
                   ))}
+                    
                 </ul>
                )}
 
@@ -155,10 +163,42 @@ const renderview=()=>{
 
                     </li>
                   ))}
+                    
                 </ul>
                )}
              </>
-       
+             {/*banco */}
+             <li className={`text-gray-200 text-sm
+               flex gap-x-4 cursor-pointer p-2
+               hover:bg-gray-600 rounded-md mt-2 `} > <MdPointOfSale/><span className={`${!open && "hidden"}`} >{Banco.title}</span>
+               { Banco.menuBanco &&(
+                <BsChevronDown  className={`${!open && "hidden"} ${!context.isMenuBancoOpen ? "rotate-[270deg]" :"rotate-[0deg]"}`} onClick={()=>context.setMenuBancoOpen(!context.isMenuBancoOpen)}/>
+               )}     
+                  </li> 
+               {Banco.menuBanco && context.isMenuBancoOpen && (
+                <ul className={`${!open && "hidden"}`}>
+                  {Banco.subMenuItems.map((x,i)=>(
+                    <li key={i}>
+                     
+                            <NavLink
+              to={x.navegacion}
+              style={({ isActive, isPending }) => {
+                return {
+                  fontWeight: isActive ? "bold" : "",
+                  color: isPending ? "red" : "black",
+                };
+              }} caseSensitive>
+              {x.title}
+
+            </NavLink>
+
+                    </li>
+                
+                  ))}
+                    
+                </ul>
+               )}
+
       </ul>
   )}
 }

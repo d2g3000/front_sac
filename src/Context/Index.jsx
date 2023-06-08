@@ -9,7 +9,7 @@ export const SacProvider = ({children}) => {
     const [isMenuVentasOpen,setMenuVentasOpen] = useState(false)
     const [isMenuInventarioOpen,setMenuInventarioOpen] = useState(false)
     const [isMenuComprasOpen,setMenuComprasOpen] = useState(false)
-
+    const [isMenuBancoOpen,setMenuBancoOpen] = useState(false)
 
     const [ubicaciones, setUbicaciones] = useState(null)
    /*
@@ -29,7 +29,9 @@ export const SacProvider = ({children}) => {
             isMenuComprasOpen,
             setMenuComprasOpen,
             ubicaciones,
-            setUbicaciones
+            setUbicaciones,
+            isMenuBancoOpen,
+            setMenuBancoOpen,
           
 
 

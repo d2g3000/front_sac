@@ -42,9 +42,9 @@ function Articulo(){
                 <table className='w-full  text-sm text-center text-gray-500 dark:text-gray-400' >
                     <thead className='text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400' >
                         <tr>
-                        <td scope="col" className="px-3 py-3">Codigo</td>
-                        <td scope="col" className="px-3 py-3">descripcion</td>
-                        <td scope="col" className="px-3 py-3">unidad</td>
+                        <td scope="col" className="px-3 py-3">Código</td>
+                        <td scope="col" className="px-3 py-3">Descripción</td>
+                        <td scope="col" className="px-3 py-3">Unidad</td>
                         <td>Detalles</td>
                         <td>Modificar</td>
                         <td>Eliminar</td>
